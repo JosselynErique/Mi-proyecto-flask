@@ -1,26 +1,20 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
-# Ruta principal
 @app.route('/')
 def index():
-    return '¡Hola! Bienvenido a mi aplicación Flask.'
+    #return '¡Hola! Bienvenido a mi aplicación Flask.'
+    return render_template('index.html', title='Inicio')
 
-# Ruta dinámica con parámetro
+
 @app.route('/usuario/<nombre>')
 def usuario(nombre):
     return f'Bienvenido, {nombre}!'
 
-# Nueva ruta estática
-@app.route('/about')
+@app.route('/about/')
 def about():
-    return 'Esta es una página de información de la aplicación.'
-
-# Nueva ruta con número como parámetro
-@app.route('/doble/<int:num>')
-def doble(num):
-    return f'El doble de {num} es {num * 2}.'
+    return render_template('about.html', title='Acerca de')
 
 if __name__ == '__main__':
     app.run(debug=True)
