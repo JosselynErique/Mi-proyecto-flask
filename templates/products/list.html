@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Inventario de Productos</h2>
+    <a href="{{ url_for('add_product') }}">
+        <button>➕ Añadir Producto</button>
+    </a>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+        </tr>
+        {% for p in productos %}
+        <tr>
+            <td>{{ p[0] }}</td>
+            <td>{{ p[1] }}</td>
+            <td>{{ p[2] }}</td>
+            <td>${{ "%.2f"|format(p[3]) }}</td>
+            <td>
+                <a href="{{ url_for('delete_product', id_producto=p[0]) }}">
+                    <button>Eliminar</button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

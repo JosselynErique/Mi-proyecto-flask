@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <section class="hero">
-        <h1>🚀 Bienvenido a mi sitio Flask</h1>
-        <p>Esta es la página de inicio, construida con Flask y Jinja2.</p>
-    </section>
+    <h2>Bienvenido al Sistema de Inventario</h2>
+    <p>Administra de manera fácil y rápida los productos de tu supermercado.</p>
+    <a href="{{ url_for('list_products') }}">
+        <button>Ver Inventario</button>
+    </a>
 {% endblock %}
+
